@@ -19,17 +19,19 @@ First we need to start an Ubuntu Docker container with a bind mount.
 
 docker run -v directory_to_lambda_code:/lambda -it --rm ubuntu
 Next, we install python3, pip, and zip.
-
+```
 apt-get update && apt-get install -y -qq python3-pip git \
 && cd /usr/local/bin && ln -s /usr/bin/python3 python \
 && python3 -m pip install --upgrade pip \
 && python3 -m pip install ipython \
 && rm -rf /var/lib/apt/lists/\*
 apt-get update && apt-get install zip
+```
 At this point, we can change to the directory that contains our code and begin installing all required python modules.
-
+```
 cd /lambda
 pip install -t . pip_module_name
+```
 Finally, we can create our deployment package.
 
 zip -r9 name_of_deployment_package .
